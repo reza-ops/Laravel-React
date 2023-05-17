@@ -37,6 +37,10 @@ Route::group([
     'middleware' => ['auth', 'verified']
 ], function (){
     Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::get('/create', [ProductController::class, 'create'])->name('create');
+    Route::get('/get-data/{page}/{count_per_page?}/{filter?}', [ProductController::class, 'getData'])->name('getData');
+
+    Route::post('/store', [ProductController::class, 'store'])->name('store');
 });
 
 Route::middleware('auth')->group(function () {
